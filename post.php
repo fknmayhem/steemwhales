@@ -3,8 +3,7 @@ include('config.php');
 ?>
 <html>
 <head>
-    <meta name="google-site-verification" content="FkA_aQzh9UJIesfdycaWWPjj3BPdbnB5STDTI-lAW8k" />
-    <title>Post on the STEEM Blockchain</title>
+    <title>Post on the Smoke Blockchain</title>
     <link rel="icon" type="image/png" href="/pic/favicon.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/whale.css">
@@ -16,7 +15,7 @@ include('config.php');
         <fieldset>
 
         <!-- Form Name -->
-        <center><legend>Create a Post on the STEEM Blockchain</legend></center>
+        <center><legend>Create a Post on the Smoke Blockchain</legend></center>
 
         <!-- Text input-->
         <div class="form-group">
@@ -80,25 +79,6 @@ include('config.php');
           </div>
         </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="sbdpercent">Steem Dollars %</label>  
-          <div class="col-md-4">
-          <input id="sbdpercent" name="sbdpercent" type="number" placeholder="" class="form-control input-md" required="" min='0' max='100' value='100' step='0.01'>
-          <span class="help-block">Set to 0% if you want to power up all your rewards</span>  
-          </div>
-        </div>
-
-
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="maxpayout">Max Accepted SBD Payout</label>  
-          <div class="col-md-4">
-          <input id="maxpayout" name="maxpayout" type="number" placeholder="" class="form-control input-md" required="" min='0' max='1000000' value='1000000' step='1'>
-          <span class="help-block">Set to 0 if you want to decline payout</span>  
-          </div>
-        </div>
 
         <!-- Button -->
         <div class="form-group">
@@ -131,7 +111,7 @@ include('config.php');
                   <label class="col-md-4 control-label" for="benefusername">Beneficiary Username</label>  
                   <div class="col-md-4">
                   <input id="benefusername" name="benefusername" type="text" placeholder="" class="form-control input-md" required="" value='heimindanger'>
-                  <span class="help-block">The steem username of the beneficiary</span>  
+                  <span class="help-block">The smoke username of the beneficiary</span>  
                   </div>
                 </div>
 
@@ -228,7 +208,6 @@ include('config.php');
         var markdown = $('#markdown').val();
         var author = $('#author').val();
         var privatekey = $('#privatekey').val();
-        var sbdpercent = 100*$('#sbdpercent').val();
         var maxpayout = parseInt($('#maxpayout').val());
 
         var operations = [
@@ -242,15 +221,14 @@ include('config.php');
               body: markdown,
               json_metadata : JSON.stringify({
                 tags: tags,
-                app: 'steemwhales.com/0.1'
+                app: 'smoke/0.1'
               })
             }
           ],
           ['comment_options', {
             author: author,
             permlink: permlink,
-            max_accepted_payout: maxpayout+'.000 SBD',
-            percent_steem_dollars: sbdpercent,
+            max_accepted_payout: maxpayout,
             allow_votes: true,
             allow_curation_rewards: true,
             extensions: [
